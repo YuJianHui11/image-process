@@ -65,25 +65,24 @@ function normalizeImages(data: unknown): NormalizedImage[] {
   }
 
   const items = (data as { data?: RawImageItem[] }).data ?? [];
+  const results: NormalizedImage[] = [];
 
-  return items
-    .map((item, index) => {
-      const { url, mime } = buildImageUrl(item, "image/png") ?? {};
-      if (!url || !mime) {
-        return null;
-      }
-      return {
-        id: `image-${item.index ?? index}`,
-        url,
-        mimeType: mime,
-        size: item.size ?? null,
-        prompt: item.prompt ?? null,
-        revisedPrompt: item.revised_prompt ?? null,
-        seed: item.seed ?? null,
-        created: item.created ?? null,
-      } satisfies NormalizedImage;
-    })
-    .filter((item): item is NormalizedImage => Boolean(item));
+  items.forEach((item, index) => {
+    const built = buildImageUrl(item, "image/png");
+    if (!built) return;
+    results.push({
+      id: `image-${item.index ?? index}`,
+      url: built.url,
+      mimeType: built.mime,
+      size: item.size ?? null,
+      prompt: item.prompt ?? null,
+      revisedPrompt: item.revised_prompt ?? null,
+      seed: item.seed ?? null,
+      created: item.created ?? null,
+    });
+  });
+
+  return results;
 }
 
 type VolcengineCallResult = {
