@@ -5,6 +5,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - 首页焕新为“AI Image Studio”，提供图片压缩、抠图去背景、图片识别与 AI 生图入口。
 - 新增 `/compress` 页面，支持本地上传预览、调节压缩比例、Canvas 压缩与下载压缩结果。PNG / WebP 自动转成 WebP，透明背景仍可保留。
 - 新增 `/remove-background` 页面，可输入 remove.bg API Key、批量上传图片并自动排队调用官方接口生成透明背景图，支持积分剩余提示、错误码反馈与结果下载。
+- 新增 `/identify` 页面，支持上传图片、填写火山引擎 ARK API Key，后端统一调用多模态识别接口并以卡片方式展示 `message.content` 文本，同时保留原始 JSON 详情。
+- 新增 `/generate` 页面，可输入提示词与反向提示词，调用火山引擎生图接口（模型 `ep-20251023012547-2jjbx`）生成高清图片，支持尺寸/水印配置、可选 API Key、预览、放大查看与下载成品图，并附带原始响应查看；若接口暂不支持 URL 返回，会自动降级到 Base64 并在前端提示，保证生成流程可用。
 
 ## Getting Started
 
