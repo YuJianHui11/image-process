@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 最近更新
+
+- 首页焕新为“AI Image Studio”，提供图片压缩、抠图去背景、图片识别与 AI 生图入口。
+- 新增 `/compress` 页面，支持本地上传预览、调节压缩比例、Canvas 压缩与下载压缩结果。PNG / WebP 自动转成 WebP，透明背景仍可保留。
+
 ## Getting Started
 
 First, run the development server:
